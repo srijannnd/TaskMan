@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div>
+    <ul class="list-group">
+    {% for object in obj %}
+        <li class="list-group-item">{{ object.message}} on {{object.created_at}}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

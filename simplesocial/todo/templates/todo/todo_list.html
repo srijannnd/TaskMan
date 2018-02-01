@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div>
+    <form class="form-0" id="todo_form" action="" method="post">
+        {%csrf_token%}
+        <div class="form-group">
+            {{form.as_p}}
+            <input class="btn-0" type="submit" value="Add">
+        </div>
+    </form>
+</div>
+<div>
+    <ul class="list-group">
+    {% for object in obj %}
+        <li class="list-group-item row">
+            <form id="{{ object.id }}" class="col-md-1" method="post">
+                {%csrf_token%}
+                <input onchange="formSubmit({{ object.id }});" class="checkbox-inline pull-left" title="Mark as Completed" name="{{ object.id }}" type="checkbox" value="{{ object.completed }}">
+            </form>
+            <p class="col-md-7" style="align-content: left">
+            {{ object.title }}
+            </p>
+            <p class="col-md-2">
+                {{ object.deadline }}
+            </p>
+            <a class="btn btn-danger pull-right" style="color: white !important; position: absolute;right: 10px; top: 7px;" href="{% url 'del_todo' id=object.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+    {% endfor %}
+    </ul>
+</div>
+    <script>
+    $(window).load(function() {
+
+        var checkBoxes = $('.checkbox-inline');
+        var formSubmit = function (id) {
+            document.getElementById(id).submit();
+        }
+    });
+    </script>
+{% endblock %}
