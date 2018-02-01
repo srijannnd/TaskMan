@@ -45,12 +45,10 @@
             <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav pull-right">
         {% if user.is_authenticated %}
-          <li><a href="{% url 'home' %}">Todo</a></li>
-            <li><a href="{% url 'activity_feed' %}">Activity Feed</a></li>
-          <li><a href="{% url 'accounts:logout' %}"><span class="glyphicon glyphicon-log-out"></span>LogOut</a></li>
+          <li><a href="{% url 'accounts:logout' %}">LogOut<span class="fa fa-times"></span></a></li>
           {% else %}
-          <li><a href="{% url 'accounts:login' %}"><span class="glyphicon glyphicon-log-in"></span>LogIn</a></li>
-          <li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span>SignUp</a></li>
+          <li><a href="{% url 'accounts:login' %}">LogIn<span class="fa fa-folder-open"></span></a></li>
+          <li><a href="{% url 'accounts:signup' %}">SignUp<span class="glyphicon glyphicon-user"></span></a></li>
         {% endif %}
       </ul>
     </div>

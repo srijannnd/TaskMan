@@ -17,13 +17,17 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
 from todo import views as todo_views
+from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', todo_views.todo_list, name='home'),
     url(r'^delete/(?P<id>\d+)/', todo_views.del_todo, name='del_todo'),
-    url(r'^activity_feed/', todo_views.activity_feed, name='activity_feed'),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     # url(r'^test/$', views.TestPage.as_view(), name='todo_list'),
     url(r'^thanks/$', views.ThanksPage.as_view(), name='thanks'),
+    url(r'^tasks/', todo_views.TodoList.as_view()),
+
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

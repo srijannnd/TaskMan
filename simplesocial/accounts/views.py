@@ -10,7 +10,7 @@ def signup(request):
             user = form.save(commit=False)
             user.is_active = True
             user.save()
-            return redirect('login')
+            return render(request, 'accounts/signup_complete.html')
     else:
         form = UserCreateForm()
 
