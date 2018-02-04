@@ -18,7 +18,7 @@ def todo_list(request):
     if request.method == 'POST':
         form = TodoForm(request.POST)
         if form.is_valid() and form.cleaned_data['title']:
-            deadline = form.cleaned_data['deadline']
+            # deadline = form.cleaned_data['deadline']
             todo = Todo.objects.create(
                 user=request.user,
                 title=form.cleaned_data['title'].capitalize(),
@@ -31,13 +31,6 @@ def todo_list(request):
         elif 'show-completed' in request.POST:
             form = TodoForm()
             obj = Todo.objects.filter(user=request.user, completed=1).order_by('-created_at')
-            return render(request, 'todo/todo_list.html', {'obj': obj, 'form': form, 'activities': activities})
-        elif 'order-by-name' in request.POST:
-            form = TodoForm()
-            obj = Todo.objects.filter(user=request.user).order_by('title')
-            return render(request, 'todo/todo_list.html', {'obj': obj, 'form': form, 'activities': activities})
-        elif 'order-by-date' in request.POST:
-            form = TodoForm()
             return render(request, 'todo/todo_list.html', {'obj': obj, 'form': form, 'activities': activities})
         else:
             list = request.POST

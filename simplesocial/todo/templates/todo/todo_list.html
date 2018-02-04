@@ -27,7 +27,8 @@
                 <div>
                     <ul class="list-group">
                         {% for object in activities %}
-                            <li style="text-align: center; overflow-wrap: break-word;" class="list-group-item">{{ object.message }}
+                            <li style="text-align: center; overflow-wrap: break-word;"
+                                class="list-group-item">{{ object.message }}
                                 on {{ object.created_at }}</li>
                         {% endfor %}
                     </ul>
@@ -40,15 +41,7 @@
     <div style="padding-left: 3%;" class="row">
         <form method="post">
             {% csrf_token %}
-            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-primary" name="order-by-name">Order by Name</button>
-        </form>
-        <form method="post">
-            {% csrf_token %}
-            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-primary" name="show-completed">Show Completed</button>
-        </form>
-        <form method="post">
-            {% csrf_token %}
-            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-primary" name="order-by-date">Order By Date</button>
+            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-info" name="show-completed">Show Completed</button>
         </form>
 
         <form method="post">
@@ -58,34 +51,47 @@
     {% if obj.count == 0 %}
         <h2 style="text-align: center; color: #797070">No records</h2>
     {% else %}
-        <div class="row col-sm-12 col-xs-12 col-md-12"
-             style="margin-left: 5px; height: 255px; overflow-x: hidden; overflow-y: scroll; margin-top: 10px;">
+        <table id="todo-table" class="table table-responsive">
+            <thead>
+            <tr class="row">
+                <th class="col-xs-1"><a href="#" style="color: #333;">#ID <span class="fa fa-sort"></span></a></th>
+                <th class="col-xs-1">Completed</th>
+                <th class="col-xs-6"><a href="#" style="color: #333;">Title <span class="fa fa-sort"></span></a></th>
 
-            <ul class="card-body list-group">
-                {% for object in obj %}
-                    <li class="list-group-item row">
-
-                        <input class="col-xs-1 col-md-1 checkbox-inline pull-left"
-                               title="Mark as Completed" name="{{ object.id }}" type="checkbox">
-
-                        <p class="col-xs-4 col-md-8" style="align-content: left; overflow-wrap: break-word;">
-                            {{ object.title }}
-                        </p>
-                        <p class="col-xs-5 col-md-2">
-                            {{ object.deadline }}
-                        </p>
-                        <a class="pull-right col-md-1"
-                           style="color: red !important; position: absolute;right: 10px; top: 7px;"
-                           href="{% url 'del_todo' id=object.id %}"><i class="fa fa-trash"
-                                                                       aria-hidden="true"></i></a>
-                    </li>
-                {% endfor %}
-            </ul>
-
-        </div>
+                <th class="col-xs-3"><a href="#" style="color: #333;">Deadline <span class="fa fa-sort"></span></a></th>
+                <th class="col-xs-1">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in obj %}
+                <tr class="row">
+                    <!-- <th scope="row">1</th> -->
+                    <td class="col-xs-1">{{ forloop.counter }}</td>
+                    <td class="col-xs-1"><input title="Mark as Completed" name="{{ object.id }}" type="checkbox"></td>
+                    <td class="col-xs-6" style="overflow-wrap: break-word">{{ object.title }}</td>
+                    <td class="col-xs-3">{{ object.deadline|date:'d M, Y'}}</td>
+                    <td class="col-xs-1"><a style="color: red !important;"
+                                              href="{% url 'del_todo' id=object.id %}"><span
+                            class="fa fa-trash" aria-hidden="true"></span></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
         </form>
     {% endif %}
     <script>
+        $(document).ready(function () {
+            $('#todo-table').DataTable({
+                "scrollY": "210px",
+                "scrollCollapse": true,
+                "paging": false,
+                "searching": false,
+                "bPaginate": false,
+                "bFilter": false,
+                "bInfo": false
+            });
+        });
+
         {% for object in obj %}
             if ("{{ object.completed }}" === "1") {
                 $('[name={{ object.id }}]').attr('checked', 'checked');
