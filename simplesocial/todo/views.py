@@ -69,3 +69,51 @@ class TodoList(ListAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 
+    def post(self, request, format=None):
+        serializer = TodoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TodoList2(APIView):
+
+    def get_object(self, pk, user_id):
+        try:
+            return Todo.objects.get(pk=pk, user=user_id)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request, pk, format=None):
+        todo = self.get_object(pk, user_id=request.user)
+        serializer = TodoSerializer(todo)
+        return Response(serializer.data)
+
+    def delete(self, request, pk, format=None):
+        todo = self.get_object(pk, user_id=request.user)
+        todo.delete()
+        return Response(status=status.HTTP_200_OK)
+
+    # serializer = NotesSerializer(data=request.data)
+    # if serializer.is_valid():
+    #     serializer.save()
+    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+    # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

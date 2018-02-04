@@ -5,8 +5,8 @@ from .models import Todo
 
 class TodoForm(forms.ModelForm):
     title = forms.CharField(label='Task Name', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please Dont be Boring'}))
-    deadline = forms.DateField(label='Deadline: (yyyy-mm-dd)',widget=forms.DateInput(format=('%Y-%m-%d'),
-                                                  attrs={'class': 'form-control'},
+    deadline = forms.DateField(label='Deadline: ',widget=forms.DateInput(format=('%Y-%m-%d'),
+                                                  attrs={'class': 'form-control', 'type': 'date'},
                                                   ), initial=datetime.now().date
                            )
     # completed = forms.BooleanField(widget=forms.BooleanField)

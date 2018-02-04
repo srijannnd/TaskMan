@@ -26,8 +26,8 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
     # url(r'^test/$', views.TestPage.as_view(), name='todo_list'),
     url(r'^thanks/$', views.ThanksPage.as_view(), name='thanks'),
-    url(r'^tasks/', todo_views.TodoList.as_view()),
-
+    url(r'^tasks/$', todo_views.TodoList.as_view()),
+    url(r'^tasks/(?P<pk>\d+)/$', todo_views.TodoList2.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
