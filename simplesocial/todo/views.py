@@ -32,6 +32,9 @@ def todo_list(request):
             form = TodoForm()
             obj = Todo.objects.filter(user=request.user, completed=1).order_by('-created_at')
             return render(request, 'todo/todo_list.html', {'obj': obj, 'form': form, 'activities': activities})
+        elif 'show-all' in request.POST:
+            form = TodoForm()
+            return render(request, 'todo/todo_list.html', {'obj': obj, 'form': form, 'activities': activities})
         else:
             list = request.POST
             for todo in obj:

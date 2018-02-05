@@ -43,14 +43,13 @@
             {% csrf_token %}
             <button class="col-xs-6 col-sm-3 col-md-2 btn btn-info" name="show-completed">Show Completed</button>
         </form>
-
         <form method="post">
             {% csrf_token %}
-            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-success pull-right">Save Changes</button>
+            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-info pull-right" name="show-all">Show All</button>
+        </form>
     </div>
-    {% if obj.count == 0 %}
-        <h2 style="text-align: center; color: #797070">No records</h2>
-    {% else %}
+        <form method="post">
+            {% csrf_token %}
         <table id="todo-table" class="table table-responsive">
             <thead>
             <tr class="row">
@@ -67,7 +66,7 @@
                 <tr class="row">
                     <!-- <th scope="row">1</th> -->
                     <td class="col-xs-1">{{ forloop.counter }}</td>
-                    <td class="col-xs-1"><input title="Mark as Completed" name="{{ object.id }}" type="checkbox"></td>
+                    <td class="col-xs-1"><input title="Mark as Completed" value="{{ object.completed }}" name="{{ object.id }}" type="checkbox"></td>
                     <td class="col-xs-6" style="overflow-wrap: break-word">{{ object.title }}</td>
                     <td class="col-xs-3">{{ object.deadline|date:'d M, Y'}}</td>
                     <td class="col-xs-1"><a style="color: red !important;"
@@ -77,12 +76,18 @@
             {% endfor %}
             </tbody>
         </table>
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8">
+                <button class="btn btn-success" style="width: 100%">Save Changes</button>
+            </div>
+            <div class="col-xs-2"></div>
+        </div>
         </form>
-    {% endif %}
     <script>
         $(document).ready(function () {
             $('#todo-table').DataTable({
-                "scrollY": "210px",
+                "scrollY": "180px",
                 "scrollCollapse": true,
                 "paging": false,
                 "searching": false,
