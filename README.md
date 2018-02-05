@@ -2,7 +2,7 @@
 Manage all your tasks on One single Page.
 <br>
 # Demo Link:
-Link: https://taskman-oemgqanuow.now.sh/ <br>
+Link: https://taskman-hyzpertobv.now.sh/ <br>
 Note: You must first Signup.
 <br>
 # Rest-api using Django Rest Framework 
