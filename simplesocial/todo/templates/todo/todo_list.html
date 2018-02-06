@@ -39,37 +39,33 @@
     </div>
 
     <div style="padding-left: 3%;" class="row">
-        <form method="post">
-            {% csrf_token %}
-            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-info" name="show-completed">Show Completed</button>
-        </form>
-        <form method="post">
-            {% csrf_token %}
-            <button class="col-xs-6 col-sm-3 col-md-2 btn btn-info pull-right" name="show-all">Show All</button>
-        </form>
+            <button onclick="show_completed()" class="col-xs-6 col-sm-3 col-md-2 btn btn-info" name="show-completed">Show Completed</button>
+
+
+            <button onclick="show_all()" class="col-xs-6 col-sm-3 col-md-2 btn btn-info pull-right" name="show-all">Show All</button>
+
     </div>
         <form method="post">
             {% csrf_token %}
-        <table id="todo-table" class="table table-responsive">
+        <table id="todo-table" class="table">
             <thead>
             <tr class="row">
-                <th class="col-xs-1"><a href="#" style="color: #333;">#ID <span class="fa fa-sort"></span></a></th>
-                <th class="col-xs-1">Completed</th>
-                <th class="col-xs-6"><a href="#" style="color: #333;">Title <span class="fa fa-sort"></span></a></th>
+                <th class="col-xs-1"><a style="color: #333; cursor: pointer;">#<span class="fa fa-sort"></span></a></th>
+                <th class="col-xs-1" style="text-align: center">Done</th>
+                <th class="col-xs-6"><a style="color: #333; cursor: pointer;">Title <span class="fa fa-sort"></span></a></th>
 
-                <th class="col-xs-3"><a href="#" style="color: #333;">Deadline <span class="fa fa-sort"></span></a></th>
-                <th class="col-xs-1">Delete</th>
+                <th class="col-xs-3" style="text-align: center"><a style="color: #333; cursor: pointer;"><i class="fa fa-calendar"></i> <span class="fa fa-sort"></span></a></th>
+                <th class="col-xs-1" style="text-align: center">Delete</th>
             </tr>
             </thead>
             <tbody>
             {% for object in obj %}
-                <tr class="row">
-                    <!-- <th scope="row">1</th> -->
+                <tr class="row todo checked-{{ object.completed }}">
                     <td class="col-xs-1">{{ forloop.counter }}</td>
-                    <td class="col-xs-1"><input title="Mark as Completed" value="{{ object.completed }}" name="{{ object.id }}" type="checkbox"></td>
-                    <td class="col-xs-6" style="overflow-wrap: break-word">{{ object.title }}</td>
-                    <td class="col-xs-3">{{ object.deadline|date:'d M, Y'}}</td>
-                    <td class="col-xs-1"><a style="color: red !important;"
+                    <td style="text-align: center" class="col-xs-1"><input title="Mark as Completed" value="{{ object.completed }}" name="{{ object.id }}" type="checkbox"></td>
+                    <td class="col-xs-6" style="overflow-wrap: break-word"><p title="{{ object.title }}">{{ object.title|stringformat:".10s"  }}</p></td>
+                    <td style="text-align: center" class="col-xs-3">{{ object.deadline|date:'d M, Y'}}</td>
+                    <td style="text-align: center" class="col-xs-1"><a style="color: red !important;"
                                               href="{% url 'del_todo' id=object.id %}"><span
                             class="fa fa-trash" aria-hidden="true"></span></a></td>
                 </tr>
@@ -77,11 +73,10 @@
             </tbody>
         </table>
         <div class="row">
-            <div class="col-xs-2"></div>
-            <div class="col-xs-8">
-                <button class="btn btn-success" style="width: 100%">Save Changes</button>
+            <div class="col-md-9"></div>
+            <div class="col-xs-12 col-md-3">
+                <button class="btn btn-success" style="width: 100%;">Save Changes</button>
             </div>
-            <div class="col-xs-2"></div>
         </div>
         </form>
     <script>
@@ -96,6 +91,20 @@
                 "bInfo": false
             });
         });
+        var todos = $('.todo');
+        var show_all = function () {
+          todos.show();
+        };
+        var completed = $('.checked-1');
+        var not_completed = $('.checked-0');
+        var show_completed = function () {
+            completed.show();
+            not_completed.hide();
+        };
+        var show_pending = function () {
+            completed.hide();
+            not_completed.show();
+        };
 
         {% for object in obj %}
             if ("{{ object.completed }}" === "1") {

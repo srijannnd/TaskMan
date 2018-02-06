@@ -23,6 +23,7 @@ def todo_list(request):
                 user=request.user,
                 title=form.cleaned_data['title'].capitalize(),
                 deadline=form.cleaned_data['deadline'],
+                completed=0,
             )
             ActivityFeed.objects.create(
                 user=request.user,
