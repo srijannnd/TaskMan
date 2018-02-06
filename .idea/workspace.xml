@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8e1debf2-86da-476c-bb46-a5195603d606" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/simplesocial/db.sqlite3" afterPath="$PROJECT_DIR$/simplesocial/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/simplesocial/todo/templates/todo/todo_list.html" afterPath="$PROJECT_DIR$/simplesocial/todo/templates/todo/todo_list.html" />
-      <change beforePath="$PROJECT_DIR$/simplesocial/todo/views.py" afterPath="$PROJECT_DIR$/simplesocial/todo/views.py" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todo_list.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="todo_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplesocial/todo/templates/todo/todo_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="66" column="50" lean-forward="false" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+            <state relative-caret-position="216">
+              <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
               <folding>
                 <element signature="e#1902#1939#0#HTML" expanded="true" />
                 <element signature="e#2020#2046#0#HTML" expanded="true" />
@@ -88,6 +86,16 @@
                 <element signature="e#3180#3210#0#HTML" expanded="true" />
                 <element signature="e#3633#3653#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,6 +125,7 @@
       <find>show</find>
       <find>ID</find>
       <find>save changes</find>
+      <find>done</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,6 +157,7 @@
         <option value="$PROJECT_DIR$/simplesocial/templates/base.html" />
         <option value="$PROJECT_DIR$/simplesocial/todo/views.py" />
         <option value="$PROJECT_DIR$/simplesocial/todo/templates/todo/todo_list.html" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -245,6 +255,15 @@
               <item name="todo" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="todo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TaskMan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="TaskMan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.5 (TaskMan) &gt;" type="70bed36:NamedLibraryElementNode" />
             </path>
           </expand>
           <select />
@@ -353,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517802168018</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="showall-with-js">
+      <created>1517937561181</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1517937561181</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -405,7 +431,8 @@
     <MESSAGE value="new-3" />
     <MESSAGE value="frontend-and-rest-api-fixed" />
     <MESSAGE value="show-all-bug-fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="show-all-bug-fix" />
+    <MESSAGE value="showall-with-js" />
+    <option name="LAST_COMMIT_MESSAGE" value="showall-with-js" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -455,13 +482,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/simplesocial/accounts/templates/accounts/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simplesocial/todo/templates/todo/todo_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
@@ -773,8 +793,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/simplesocial/todo/templates/todo/todo_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="66" column="50" lean-forward="false" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+        <state relative-caret-position="216">
+          <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
           <folding>
             <element signature="e#1902#1939#0#HTML" expanded="true" />
             <element signature="e#2020#2046#0#HTML" expanded="true" />
@@ -788,6 +808,14 @@
             <element signature="e#3180#3210#0#HTML" expanded="true" />
             <element signature="e#3633#3653#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

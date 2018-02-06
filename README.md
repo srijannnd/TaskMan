@@ -2,7 +2,7 @@
 Manage all your tasks on One single Page.
 <br>
 # Demo Link:
-Link: https://taskman-fdidugfugf.now.sh/
+Link: https://taskman-afwcilsfrk.now.sh/
 Note: You must first Signup.
 <br>
 # Rest-api using Django Rest Framework 
